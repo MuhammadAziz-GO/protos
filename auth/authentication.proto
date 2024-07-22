@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option go_package = "/gen-proto/auth";
+
+package auth;
+
+import "common/common.proto";
+
+service AuthenticationService {
+  rpc Register(RegisterRequest) returns(RegisterResponse) {}
+  rpc Login(LoginRequest) returns(LoginResponse) {}
+  rpc GetUser(GetUserRequest) returns(GetUserResponse) {}
+  rpc UpdateUser(UpdateRequest) returns (UpdateResponse) {}
+  rpc DeleteUser(DeleteRequest) returns (DeleteResponse) {}
+//  rpc GetRecommendation(GetRecRequest) returns (GetRecResponse) {}
+  rpc GetProduct(GetProductRequest) returns (GetProductResponse) {}
+}
+
+message RegisterRequest {
+  common.User data = 1;
+}
+message RegisterResponse {
+  string message = 1;
+}
+message LoginRequest {
+  string Email = 1;
+  string Password = 2;
+}
+message LoginResponse {
+  string AccessToken = 1;
+  string RefreshToken = 2;
+  int32 ExpireIn = 3;
+}
+
+message GetUserRequest {
+  string ID = 1;
+}
+message GetUserResponse {
+  common.User user = 1;
+}
+message UpdateRequest {
+  string FullName = 1;
+  string Password = 2;
+}
+message UpdateResponse {
+  common.User UpdateUser = 1;
+}
+
+message DeleteRequest {
+  string ID = 1;
+}
+message DeleteResponse {
+  common.User data = 1;
+  string message = 2;
+}
+
+//message GetRecRequest {}
+//message GetRecResponse {}
+
+message GetProductRequest {}
+
+message GetProductResponse {}

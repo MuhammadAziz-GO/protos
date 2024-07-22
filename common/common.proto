@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "/gen-proto/common";
+
+package common;
+
+service CommonService {}
+
+message User {
+  string ID = 1;
+  string FullName = 2;
+  string UserName = 3;
+  string Email = 4;
+  string Password = 5;
+  string PhoneNumber = 6;
+  string Image = 7;
+  string Role = 8;
+  string CreatedAt = 9;
+  string UpdatedAt = 10;
+}
+
+message UserLocation {
+  string LocationID = 1;
+  string UserID = 2;
+  string Address = 3;
+  string City = 4;
+  string State = 5;
+  string Country = 6;
+  string PostalCode = 7;
+}
